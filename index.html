@@ -1,0 +1,37 @@
+<html>
+  <head>
+
+  </head>
+  <body>
+
+    <div id="images-list">
+
+    </div>
+
+    <script>
+
+      fetch("https://fakestoreapi.com/products/")
+        .then(response => response.json())
+        .then(data => { 
+          console.log(data)
+          
+          let images = data.map(product => product.image);
+          console.log(images);
+
+          let imagesList = document.getElementById("images-list");
+
+          images.map(image => {
+
+            let imageElement = document.createElement("img");
+            imageElement.src = image;
+            imageElement.height = 100;
+
+            imagesList.appendChild(imageElement);
+
+          });
+          
+        });
+
+    </script>
+  </body>
+</html>
